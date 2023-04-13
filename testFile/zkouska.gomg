@@ -1,0 +1,30 @@
+package Pages
+
+import (
+    gomg "jknz-reg/Gophernaut"
+)
+
+func CalendarPage() []byte {
+	timeNow := time.Now()
+	calendar := gomg.NewPage()
+	land := "cs-CZ"
+	calendar.PageCode += <html lang={land}>
+        <head >
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>
+                Nové Zámky JK
+            </title>
+            <script src="https://cdn.tailwindcss.com">
+            </script>
+        </head>
+        <body >
+            <script id="loader" src="loader.js">
+                gomg.PrefetchJs([]string{"Day.js", "Month.js", "NDays.js", "Week.js", "selDivChaCla.js"}),
+            </script>
+        </body>
+    </html>
+	html := calendar.SaveHTMLPage("./Pages/templates", "calendar.html")
+	gomg.GenerateTailwindCss("./Pages/tailwindcss", "./css/output.css", "./css/calendar.css", true)
+	return html
+}
