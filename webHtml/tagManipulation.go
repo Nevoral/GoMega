@@ -24,7 +24,7 @@ Atr is function that formatted slice with given attributes into formatted string
 */
 func Atr(atr ...string) (out string) {
 	for _, val := range atr {
-		out += fmt.Sprintf("%s", val)
+		out += fmt.Sprintf(" %s", val)
 	}
 	return
 }
@@ -34,7 +34,7 @@ Val is function that takes slice of string and convert it single string used in 
 */
 func Val(value ...string) (out string) {
 	for _, v := range value {
-		out += v
+		out += fmt.Sprintf("\n%s", val)
 	}
 	return
 }
@@ -43,5 +43,10 @@ func Val(value ...string) (out string) {
 CreateTag is function complete tag with given arguments.
 */
 func CreateTag(tag, atr, value string) string {
-	return fmt.Sprintf("\n<%s%s>\n%s\n</%s>", tag, atr, value, tag)
+	if len(atr) != 0 {
+		if atr[0] != ' ' {
+			return fmt.Sprintf("<%s %s>%s\n</%s>", tag, atr, value, tag)
+		}
+	}
+	return fmt.Sprintf("<%s%s>%s\n</%s>", tag, atr, value, tag)
 }
