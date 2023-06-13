@@ -1,4 +1,4 @@
-package webJs
+package webHtml
 
 import (
 	"fmt"

@@ -1,4 +1,4 @@
-package webJs
+package webHtml
 
 import (
 	"fmt"
@@ -7,7 +7,7 @@ import (
 )
 
 func GenerateTailwindCss(name, inputFolder, outputFolder string, production bool) {
-	var prod string = "--watch"
+	var prod = "--watch"
 	if production {
 		prod = "--minify"
 	}
